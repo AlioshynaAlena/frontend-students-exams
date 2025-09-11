@@ -1,6 +1,7 @@
 {
     "name": "frontend-students-exams",
     "private": true,
+    "homepage": "https://AlioshynaAlena.github.io/frontend-students-exams",
     "version": "0.0.0",
     "type": "module",
     "scripts": {
