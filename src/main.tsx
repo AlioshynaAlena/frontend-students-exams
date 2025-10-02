@@ -969,3 +969,377 @@
 // createRoot(document.getElementById("root")!).render(<UsersList />)
 
 // // Что надо написать вместо xxx, чтобы отрисовались пользователи старше 25 лет?
+
+
+
+// import { useState, ChangeEvent } from "react"
+// import { createRoot } from "react-dom/client"
+
+// const User = () => {
+//   const [userName, setUserName] = useState<string>("")
+
+//   const [text, setText] = useState<string>("")
+
+//   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+//     setUserName(e.currentTarget.value)
+//   }
+
+//   return (
+//     <div>
+//       <input
+//         value={userName}
+//         onChange={onChangeHandler}
+//         onBlur={() => {
+//           setUserName("")
+//           setText(userName)
+//         }}
+//       />
+//       <p>{text}</p>
+//     </div>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<User />)
+
+// // Что надо написать вместо ❗X,
+// // чтобы после вывода текста в параграф содержимое формы ввода очищалось?
+
+
+
+
+
+
+// import { ChangeEvent, useState } from "react"
+// import { createRoot } from "react-dom/client"
+
+// const User = () => {
+//   const [userName, setUserName] = useState<string>("")
+
+//   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+//     setUserName(e.currentTarget.value)
+//   }
+
+//   return (
+//     <div>
+//       <p>{userName}</p>
+//       <input onChange={onChangeHandler} />
+//     </div>
+//   )
+// }
+// createRoot(document.getElementById("root")!).render(<User />)
+
+// // Что надо написать вместо ххх, чтобы правильно типизировать параметр функции?
+
+
+
+
+
+
+// import { MouseEvent } from "react"
+// import { createRoot } from "react-dom/client"
+
+// const AuthForm = () => {
+//   const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
+//     e.preventDefault()
+//     alert("🚀🚀🚀")
+//   }
+//   return (
+//     <form>
+//       <div>
+//         <label style={{ padding: "10px 0" }}>
+//           Name:
+//           <input type={"email"} name={"email"} />
+//         </label>
+//       </div>
+//       <div>
+//         <label style={{ padding: "10px 0" }}>
+//           Password:
+//           <input type={"password"} name={"password"} />
+//         </label>
+//       </div>
+//       <button onClick={onClickHandler} type={"submit"}>
+//         Log in
+//       </button>
+//     </form>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<AuthForm />)
+
+// // Что надо написать вместо ❗X, чтобы данные из формы
+// // не отправлялись на сервер и страница не перезагружалась
+// // при клике по кнопке?
+
+
+
+
+
+// import { MouseEvent } from "react"
+// import { createRoot } from "react-dom/client"
+
+// const Post = () => {
+//   const onClickHandler = (e: MouseEvent<HTMLAnchorElement>) => {
+//     e.preventDefault()
+//     alert("Летим 🚀")
+//   }
+
+//   return (
+//     <a href={"https://www.youtube.com/"} onClick={onClickHandler}>
+//       Ссылка, которая ведет на youtube
+//     </a>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<Post />)
+
+// // Что надо написать вместо ❗X, чтобы Вас не направило на страницу Youtube
+// // при клике по ссылке?
+
+
+
+
+// import { useState } from "react"
+// import { createRoot } from "react-dom/client"
+
+// type User = {
+//   id: number
+//   name: string
+//   age: number
+// }
+
+// type UserProps = User & {
+//   deleteUser: (id: number) => void
+// }
+
+// const User = (props: UserProps) => (
+//   <li>
+//     <button onClick={() => props.deleteUser(props.id)}>x</button>
+//     User {props.name}: {props.age} y.o.
+//   </li>
+// )
+
+// const UsersList = () => {
+//   const data: User[] = [
+//     { id: 1, name: "Bob", age: 25 },
+//     { id: 2, name: "Alex", age: 28 },
+//     { id: 3, name: "Ann", age: 23 },
+//     { id: 4, name: "John", age: 30 },
+//   ]
+
+//   const [users, setUsers] = useState<User[]>(data)
+
+//   const deleteUser = (userID: number) => {
+//     const filteredUsers = users.filter((u) => u.id !== userID)
+//     setUsers(filteredUsers)
+//   }
+
+//   return (
+//     <main>
+//       <h4>User list:</h4>
+//       <ul>
+//         {users.map((u) => (
+//           <User key={u.id} {...u} deleteUser={deleteUser} />
+//         ))}
+//       </ul>
+//     </main>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<UsersList />)
+// // Что надо написать вместо xxx, чтобы код работал?
+
+
+
+
+
+// import { useState } from "react"
+// import { createRoot } from "react-dom/client"
+
+// const User = () => {
+//   const [userName, setUserName] = useState<string>("")
+
+//   return (
+//     <div>
+//       <p>{userName}</p>
+//       <input
+//         value={userName}
+//         onChange={(e) => setUserName(e.currentTarget.value)}
+//       />
+//     </div>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<User />)
+
+// // Что надо написать вместо ❗X, чтобы input был контролируемым?
+
+
+
+
+// import { useState } from "react"
+// import { createRoot } from "react-dom/client"
+
+// type User = {
+//   id: number
+//   name: string
+//   age: number
+// }
+
+// type UserProps = User & {
+//   deleteUser: (id: number) => void
+// }
+
+// const User = (props: UserProps) => {
+//   const deleteUser = () => props.deleteUser(props.id)
+
+//   return (
+//     <li>
+//       <button onClick={deleteUser}>Delete</button>
+//       User {props.name}: {props.age} y.o.
+//     </li>
+//   )
+// }
+
+// const UsersList = () => {
+//   const data: User[] = [
+//     { id: 1, name: "Bob", age: 25 },
+//     { id: 2, name: "Alex", age: 28 },
+//     { id: 3, name: "Ann", age: 23 },
+//     { id: 4, name: "John", age: 30 },
+//   ]
+
+//   const [users, setUsers] = useState<User[]>(data)
+
+//   const deleteUser = (userID: number) => {
+//     const updatedUsers = users.filter((u) => u.id !== userID)
+//     setUsers(updatedUsers)
+//   }
+
+//   return (
+//     <main>
+//       <h4>User list:</h4>
+//       <ul>
+//         {users.map((u) => (
+//           <User key={u.id} {...u} deleteUser={deleteUser} />
+//         ))}
+//       </ul>
+//     </main>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<UsersList />)
+
+// // Что надо написать вместо xxx, чтобы код работал?
+
+
+
+
+//❓НЕ РЕШИЛА ПРАВИЛЬНО!
+// import { useState, ChangeEvent } from "react"
+// import { createRoot } from "react-dom/client"
+
+// const Notes = () => {
+//   const [newNote, setNewNote] = useState<string>("")
+//   const [notes, setNotes] = useState<string[]>([])
+
+//   const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+//     setNewNote(e.currentTarget.value)
+//   }
+
+//   const addNoteHandler = () => {
+//     setNotes([newNote, ...notes])
+//     setNewNote("")
+//   }
+
+
+//   return (
+//     <div>
+//       <textarea value={newNote} onChange={onChangeHandler} />
+//       <div>
+//         <button onClick={addNoteHandler}>Add note</button>
+//         <button onClick={() => setNotes([])}>Clear notes list</button>
+//       </div>
+//       <h4>Notes:</h4>
+//       <div>
+//         {notes.map((note) => (
+//           <p>{note}</p>
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<Notes />)
+// // Что надо написать вместо ххх,
+// // чтобы при клике на кнопку `Clear notes list` список заметок очищался?
+
+
+
+
+
+
+// const camera = {
+//   name: "Bob",
+// }
+
+// const affair = camera
+
+// export const advertising = {}
+
+// export const boss = {
+//   name: "Bob",
+// }
+
+// if (boss === affair) {
+//   console.log("Yo!!!")
+// } else {
+//   console.log("Hey!!!")
+// }
+
+// // Какие переменные можно использовать вместо XXX, что бы в консоль вывелась строка "Hey"!!!"?
+// // Если их несколько, напишите через пробел.
+
+
+
+
+// import { useState, ChangeEvent } from "react"
+// import { createRoot } from "react-dom/client"
+
+// const Notes = () => {
+//   const [newNote, setNewNote] = useState<string>("")
+//   const [notes, setNotes] = useState<string[]>([])
+
+//   const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+//     setNewNote(e.currentTarget.value)
+//   }
+
+//   const addNoteHandler = () => {
+//     setNotes([newNote, ...notes])
+//     setNewNote("")
+//   }
+
+//   return (
+//     <div>
+//       <textarea value={newNote} onChange={onChangeHandler} />
+//       <div>
+//         <button onClick={addNoteHandler}>Add note</button>
+//         <button onClick={()=>setNotes([])}>Clear notes list</button>
+//       </div>
+//       <h4>Notes:</h4>
+//       <div>
+//         {notes.map((note) => (
+//           <p>{note}</p>
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<Notes />)
+// // Что надо написать вместо ххх,
+// // чтобы при клике на кнопку `Clear notes list` список заметок очищался?
+
+
+
+
+
