@@ -1343,3 +1343,644 @@
 
 
 
+// const student = {
+//   name: "Masha",
+//   age: 59,
+//   friends: ["Nikita", "Victor", "Lev"]
+// }
+
+// export const updatedStudent = {...student}
+
+// updatedStudent.friends.push("Max")
+
+// console.log(student.friends[3])
+
+// // Какое значение будет выведено в консоль? Max
+
+
+
+
+// import { useState } from "react"
+// import { createRoot } from "react-dom/client"
+
+// const ColorButton = () => {
+//   const [isColored, setIsColored] = useState<boolean>(false)
+
+//   return (
+//     <button style={{ backgroundColor: `${isColored === true ? "red" : ""}` }} onClick={() => setIsColored(true)}>
+//       Меняю цвет по клику
+//     </button>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<ColorButton />)
+
+// // Что надо написать вместо XXX, чтобы при клике кнопка становилась красной?
+
+
+
+
+
+// const student = {
+//   name: "Max",
+// }
+
+// const newStudent = student
+
+// const myFriend = {
+//   ...newStudent,
+// }
+
+// const newUser = {
+//   name: "Rita",
+// }
+
+// export const myFriendName = student.name !== myFriend.name ? newUser.name : student.name
+// console.log(myFriendName);
+
+
+// // Какое значение получит переменная "myFriendName"? Max
+
+
+
+
+
+// import { useState } from "react"
+// import { createRoot } from "react-dom/client"
+
+// type User = {
+//   id: number
+//   name: string
+//   personalData: PersonalData
+// }
+
+// type PersonalData = {
+//   gender: string
+//   age: number
+//   technologies: Technologies[]
+// }
+
+// type Technologies = "HTML" | "CSS" | "React" | "JS/TS" | "Redux"
+
+// const UsersList = () => {
+//   const [users] = useState<User[]>([
+//     {
+//       id: 1,
+//       name: "Bob",
+//       personalData: {
+//         gender: "male",
+//         age: 23,
+//         technologies: ["HTML", "CSS", "React", "JS/TS", "Redux"],
+//       },
+//     },
+//     {
+//       id: 2,
+//       name: "Alex",
+//       personalData: {
+//         gender: "male",
+//         age: 21,
+//         technologies: ["HTML", "CSS", "React"],
+//       },
+//     },
+//     {
+//       id: 3,
+//       name: "Ann",
+//       personalData: {
+//         gender: "female",
+//         age: 26,
+//         technologies: ["HTML", "CSS", "JS/TS"],
+//       },
+//     },
+//     {
+//       id: 4,
+//       name: "Helen",
+//       personalData: {
+//         gender: "female",
+//         age: 31,
+//         technologies: ["HTML", "CSS"],
+//       },
+//     },
+//     {
+//       id: 5,
+//       name: "Donald",
+//       personalData: {
+//         gender: "male",
+//         age: 28,
+//         technologies: ["React", "JS/TS", "Redux"],
+//       },
+//     },
+//   ])
+
+//   return (
+//     <ul>
+//       {users.map((u) => {
+//         return u.personalData.technologies.length >= 5 ? (
+//           <li key={u.id}>{`User ${u.name}. ${u.personalData.age}. Ready to work.`}</li>
+//         ) : (
+//           <li key={u.id}>{`User ${u.name}. ${u.personalData.age}. `}</li>
+//         )
+//       })}
+//     </ul>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<UsersList />)
+
+// // Те пользователи, у которых в стэке пять и более технологий, должны в списке
+// // быть отмечены, как готовые к работе.
+// // Что надо вставить вместо XXX, чтобы код выполнял данное условие?
+
+
+
+
+// import { useState } from "react"
+// import { createRoot } from "react-dom/client"
+
+// const UsersList = () => {
+//   const [users, setUsers] = useState<string[]>(["Bob", "Alex", "Ann"])
+
+//   const getUser = (user: string, i: number) => <li key={i}>{user}</li>
+
+//   const usersList = users.length === 0 ? <p>List is empty</p> : <ul>{users.map(getUser)}</ul>
+
+//   return (
+//     <main>
+//       <button onClick={() => setUsers([])}>Clear list</button>
+//       <h4>User list:</h4>
+//       {usersList}
+//     </main>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<UsersList />)
+
+// // Что надо вставить вместо XXX, чтобы код корректно работал со списком пользователей?
+
+
+
+
+// import { useState } from "react"
+// import { createRoot } from "react-dom/client"
+
+// const PasswordChecker = () => {
+//   const [password, setPassword] = useState<string>("")
+
+//   return (
+//     <main>
+//       <p>Your password must have more than 8 charters!</p>
+//       <input
+//         placeholder={"Enter your password"}
+//         value={password}
+//         onChange={(e) => setPassword(e.currentTarget.value)}
+//         type={"password"}
+//       />
+//       {password.length < 9 && <p style={{ color: "red" }}>The password is too short!</p>}
+//     </main>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<PasswordChecker />)
+
+// // Что надо вставить вместо XXX, чтобы код работал нормально?
+
+
+
+
+// import { useState } from "react"
+// import { createRoot } from "react-dom/client"
+
+// export const colors = ["red", "yellow", "green", "blue", "violet", "chartreuse"]
+
+// const styles = {
+//   width: "100px",
+//   height: "100px",
+//   borderRadius: "50%",
+//   backgroundColor: "black",
+// }
+
+// const Colorize = () => {
+//   const [color, setColor] = useState<string>("black")
+
+//   const getColor = (colors: string[]) => {
+//     const nextColor = colors[Math.floor(Math.random() * colors.length)]
+//     return nextColor
+//   }
+
+//   return (
+//     <main>
+//       <div style={{ ...styles, backgroundColor: color }} />
+//       <div>
+//         <button onClick={() => setColor(getColor(colors))}>Get random color</button>
+//       </div>
+//     </main>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<Colorize />)
+
+// // Что надо вставить вместо XXX, чтобы круг менял цвет по клику?
+
+
+
+
+
+
+//‼️ НЕ ПРАВИЛЬНО!
+// const customer = {
+//   name: "Daniil",
+//   age: 25
+// }
+
+// export const copyCustomer = {...customer}
+
+// customer.name = "Artur"
+
+// console.log(copyCustomer.name);
+
+
+// // Чему равно copyCustomer.name после выполнения этого кода?
+
+
+
+
+// const user = {
+//     name: "Mia",
+//     age: 8
+// }
+
+// export const copyUser = user
+ 
+// user.age = 8
+
+// console.log(copyUser.age);
+
+
+// // Чему равно значение copyUser.age после выполнения этого кода?
+
+
+
+
+
+// import { ChangeEvent, useState } from "react"
+// import { createRoot } from "react-dom/client"
+
+// const MIN_COMMENT_SIZE = 5
+
+// const LongCommentChecker = () => {
+//   const [comment, setComment] = useState<string>("")
+
+//   const isCommentReady = comment.length > MIN_COMMENT_SIZE
+
+//   const setCommentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+//     const newComment = e.currentTarget.value
+
+//     setComment(newComment)
+//   }
+
+//   const clearCommentsHandler = () => {
+//     if (isCommentReady) {
+//       setComment("")
+//     }
+//   }
+
+//   return (
+//     <main>
+//       <textarea
+//         placeholder={"Your comment must have more than 5 charters"}
+//         value={comment}
+//         onChange={setCommentHandler}
+//       />
+//       <div>
+//         <button disabled={!isCommentReady} onClick={clearCommentsHandler}>
+//           Send comment
+//         </button>
+//       </div>
+//     </main>
+//   )
+// }
+
+// createRoot(document.getElementById("root")!).render(<LongCommentChecker />)
+
+// // Что нужно написать вместо XXX, чтобы кнопка отправки комментария отрабатывала верно:
+// // первоначально кнопка должна быть в состоянии disable, а после успешного выполнения условия (комментарий должен быть больше 5 символов) должна раздизаблиться.
+// // ❗ Ответ необходимо дать на основании данных (переменных), которые уже есть в коде
+
+
+
+
+
+// const clients = ["Leo", "Maxim", "Ekaterina"]
+// const clothes = [...clients]
+// const beginning = clothes
+
+// export const result = beginning !==  null ? "Yo!!!" : "Hey!!!"
+// console.log(result);
+
+
+// // Имя какой переменной надо указать вместо XXX, что бы переменная result получила значение "Yo!!!"?
+// // Если такой переменной нет, в качестве ответа укажите null.
+
+
+
+
+
+// const student = {
+//     name: "Daniil",
+//     age: 29,
+//     friends: ["Michail", "Masha", "Egor"]
+// }
+
+// const updatedStudent = {
+//    ...student, 
+//    friends: student.friends
+// }
+
+// console.log(student.friends === updatedStudent.friends)
+
+// // Какое значение будет выведено в консоль?
+
+
+
+
+
+// const customer = {
+//   name: "Rita",
+//   age: 78,
+//   friends: ["Artem", "Nikita", "Andrey"]
+// }
+
+// const newFriend = "Leonid"
+
+// const friends = [...customer.friends, newFriend]
+
+// export const updatedCustomer = {...customer, friends: friends}
+
+// // Выполнено преобразование объекта: добавлен новый друг в список.
+// // Что надо указать вместо XXX, что бы выполнить это действие иммутабельно?
+
+
+
+
+
+// type Samurai = {
+//   id: string
+//   name: string
+//   status: "online" | "offline"
+// }
+
+// type CourseName = "HTML" | "JS" | "React" | "Redux" | "HomeWorks"
+
+// type Course = {
+//   name: CourseName
+//   mentor: string
+//   isDone: boolean
+// }
+
+// type Technologies = {
+//   [userID: string]: Course[]
+// }
+
+// const samuraiID_1 = "64jf-87kg"
+// const samuraiID_2 = "90lg-34ks"
+// const samuraiID_3 = "12jm-05fd"
+
+// export const samurai: Samurai[] = [
+//   { id: samuraiID_1, name: "Bob", status: "online" },
+//   { id: samuraiID_2, name: "Alex", status: "offline" },
+//   { id: samuraiID_3, name: "Ann", status: "offline" },
+// ]
+
+// export const technologies: Technologies = {
+//   [samuraiID_1]: [
+//     { name: "HTML", mentor: "Svetlana", isDone: true },
+//     { name: "JS", mentor: "Viktor", isDone: true },
+//     { name: "React", mentor: "Dmitrij", isDone: false },
+//     { name: "Redux", mentor: "Valera", isDone: false },
+//     { name: "HomeWorks", mentor: "Ignat", isDone: true },
+//   ],
+//   [samuraiID_2]: [
+//     { name: "HTML", mentor: "Svetlana", isDone: true },
+//     { name: "JS", mentor: "Viktor", isDone: true },
+//     { name: "React", mentor: "Dmitrij", isDone: true },
+//     { name: "Redux", mentor: "Valera", isDone: false },
+//     { name: "HomeWorks", mentor: "Ignat", isDone: true },
+//   ],
+//   [samuraiID_3]: [
+//     { name: "HTML", mentor: "Svetlana", isDone: true },
+//     { name: "JS", mentor: "Viktor", isDone: true },
+//     { name: "React", mentor: "Dmitrij", isDone: false },
+//     { name: "Redux", mentor: "Valera", isDone: false },
+//     { name: "HomeWorks", mentor: "Ignat", isDone: false },
+//   ],
+// }
+
+// export const updateCourseStatus = (samuraiID: string, name: CourseName, isDone: boolean) => {
+//   return { ...technologies, [samuraiID]: technologies[samuraiID].map((c) => (c.name === name ? { ...c, isDone } : c)) }
+// }
+
+// // Дан список самураев из инкубатора и структура, хранящая данные о курсах,
+// // которые самурай уже прошёл, а так же о тех курсах, которые ему ещё предстоит пройти.
+// // Так же дана функция updateCourseStatus,
+// // которая позволяет отметить курс как пройденный самураем или снять такую отметку
+// // Что надо написать вместо XXX, чтобы функция работала корректно?
+
+
+
+
+// //⛔️НЕПРАВИЛЬНО
+// type Student = {
+//   id: number
+//   name: string
+// }
+
+// type Friends = {
+//   [key: string]: string[]
+// }
+
+// export const students: Student[] = [
+//   { id: 1, name: "Bob" },
+//   { id: 2, name: "Alex" },
+//   { id: 3, name: "Ann" },
+//   { id: 4, name: "Charley" },
+// ]
+
+// export const friends: Friends = {
+//   1: ["Oliver", "Jack", "Oscar"],
+//   2: ["Jack", "Lewis", "Thomas"],
+//   3: ["William", "Michael", "Lewis"],
+//   4: ["Oscar", "James", "William"],
+// }
+
+// //Дан список студентов и структура,
+// //которая содержит список друзей каждого из студентов.
+// //Id студента является ключом к массиву его друзей.
+// //Какое значение лежит тут: friends[students[1].id][2]?
+// console.log(friends[students[1].id][2]); //["Jack", "Lewis", "Thomas"]
+
+
+
+
+
+
+// type Student = {
+//   id: number
+//   name: string
+//   age: number
+// }
+
+// type Friends = {
+//   [key: string]: string[]
+// }
+
+// export const students: Student[] = [
+//   { id: 1, name: "Bob", age: 34 },
+//   { id: 2, name: "Alex", age: 23 },
+//   { id: 3, name: "Ann", age: 25 },
+//   { id: 4, name: "Charley", age: 20 },
+// ]
+
+// export const friends: Friends = {
+//   1: ["Jack", "Oliver", "Oscar"],
+//   2: ["Jack", "Lewis", "Thomas"],
+//   3: ["William", "Lewis", "Michael"],
+//   4: ["Oscar", "Thomas", "William"],
+// }
+
+// //Дан массив студентов и структура,
+// //которая содержит список друзей каждого из студентов.
+// //Id студента является ключом к массиву его друзей.
+// //Имеют ли студенты students[1] и students[3] общих друзей?
+// //Если да, напишите в ответе имя общего друга в кавычках, если нет - напишите в ответе false.
+
+
+
+
+
+// type Student = {
+//   id: number
+//   name: string
+// }
+
+// type Friends = {
+//   [key: string]: string[]
+// }
+
+// export const students: Student[] = [
+//   { id: 1, name: "Bob" },
+//   { id: 2, name: "Alex" },
+//   { id: 3, name: "Ann" },
+//   { id: 4, name: "Charley" },
+// ]
+
+// export const friends: Friends = {
+//   1: ["Oliver", "Jack", "Oscar"],
+//   2: ["Jack", "Lewis", "Thomas"],
+//   3: ["William", "Michael", "Lewis"],
+//   4: ["Oscar", "James", "William"],
+// }
+
+// console.log(friends[3][1]);
+
+
+// //Дан список студентов и структура,
+// //которая содержит список друзей каждого из студентов.
+// //Id студента является ключом к массиву его друзей.
+// //Какое значение лежит тут: friends[3][1]?
+
+
+
+
+
+// type Student = {
+//   id: number
+//   name: string
+// }
+
+// type Students = Student[]
+
+// type Friends = {
+//   [key: string]: string[]
+// }
+
+// export const students: Students = [
+//   { id: 1, name: "Bob" },
+//   { id: 2, name: "Alex" },
+//   { id: 3, name: "Ann" },
+//   { id: 4, name: "Charley" },
+// ]
+
+// export const friends: Friends = {
+//   1: ["Oliver", "Jack", "Oscar"],
+//   2: ["Jack", "Lewis", "Thomas"],
+//   3: ["William", "Michael", "Lewis"],
+//   4: ["Oscar", "James", "William"],
+// }
+
+// //Дан список студентов и структура,
+// //которая содержит список друзей каждого из студентов.
+// //Id студента является ключом к массиву его друзей.
+// //Что вернёт выражение: Array.isArray(friends)?
+
+
+
+
+// type Student = {
+//   id: number
+//   name: string
+// }
+
+// type Friends = {
+//   [key: string]: string[]
+// }
+
+// export const students: Student[] = [
+//   { id: 1, name: "Bob" },
+//   { id: 2, name: "Alex" },
+//   { id: 3, name: "Ann" },
+//   { id: 4, name: "Charley" },
+// ]
+
+// export const friends: Friends = {
+//   1: ["Oliver", "Jack", "Oscar"],
+//   2: ["Jack", "Lewis", "Thomas"],
+//   3: ["William", "Michael", "Lewis"],
+//   4: ["Oscar", "James", "William"],
+// }
+
+// //Дан список студентов и структура,
+// //которая содержит список друзей каждого из студентов.
+// //Id студента является ключом к массиву его друзей.
+// //Какое значение лежит тут: friends[students[0].id][3]?
+
+
+
+
+// type Student = {
+//   id: number
+//   name: string
+// }
+
+// type Students = Student[]
+
+// type Friends = {
+//   [key: string]: string[]
+// }
+
+// export const students: Students = [
+//   { id: 1, name: "Bob" },
+//   { id: 2, name: "Alex" },
+//   { id: 3, name: "Ann" },
+//   { id: 4, name: "Charley" },
+// ]
+
+// export const friends: Friends = {
+//   1: ["Oliver", "Jack", "Oscar"],
+//   2: ["Jack", "Lewis", "Thomas"],
+//   3: ["William", "Michael", "Lewis"],
+//   4: ["Oscar", "James", "William"],
+// }
+
+// //Дан список студентов и структура,
+// //которая содержит список друзей каждого из студентов
+// //Id студента является ключом к массиву его друзей.
+// //Что вернёт выражение Array.isArray(students)?
