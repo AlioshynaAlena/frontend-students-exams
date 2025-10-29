@@ -2269,3 +2269,221 @@
 // // и возвращает массив с именами общих друзей,
 // // если они есть и пустой массив, если таковых нету.
 // // Что надо написать вместо ххх, чтобы функция работала?
+
+
+// //⛔️НЕПРАВИЛЬНО
+// const animal = {
+//   name: "Daniil",
+//   scores: 12, //13
+// }
+//
+// const country = {
+//   ...animal,
+//   scores: animal.scores++,
+// }
+//
+// export const scores = country.scores
+// console.log(scores)
+// // Какое значение получит переменная scores?
+
+
+
+
+// const { customer } = { customer: 56 }
+//
+// const multiply = customer * 30.06 // 1683,36
+//
+// export const randomValue = multiply && "Valera" && "Maxim"
+// console.log(randomValue)
+// // Какое значение получит переменная randomValue ?
+
+
+
+// type User = {
+//   id: number
+//   userName: string
+//   email: string
+//   password: string
+// }
+//
+// type ChangeUserPasswordAction = {
+//   type: "CHANGE-USER-PASSWORD"
+//   payload: {
+//     id: number
+//     newPassword: string
+//   }
+// }
+//
+// export const userReducer = (state: User[], action: ChangeUserPasswordAction): User[] => {
+//   switch (action.type) {
+//     case "CHANGE-USER-PASSWORD":
+//       return state.map((u) => (u.id === action.payload.id ? { ...u, password: action.payload.newPassword } : u))
+//     default:
+//       return state
+//   }
+// }
+//
+// // Какой код должен быть написан вместо XXX и YYY в типе
+// // ChangeUserPasswordAction, что бы редьюсер работал?
+// // В ответе напишите через пробел: XXX YYY
+
+
+
+
+// const name = "Igor"
+//
+// const student = {
+//   [name]: name,
+// }
+//
+//
+// export const number = student["name"] ? 49.48 : 87.75
+// console.log(number)
+// // Какое значение получит переменная number?
+
+
+
+// type Action = {
+//   type: "SUM" | "SUB" | "MULT" | "DIV" | "EXP"
+//   payload: number
+// }
+//
+// export const calculator = (state: number, action: Action): number => {
+//   switch (action.type) {
+//     case "SUM":
+//       return state + action.payload
+//     case "SUB":
+//       return state - action.payload
+//     case "DIV":
+//       return state / action.payload
+//     case "EXP":
+//       return state ** action.payload
+//     default:
+//       return state
+//   }
+// }
+//
+// // Что вернёт такой вызов функции: calculator(10, {type: "MULT", payload: 2})?
+// console.log(calculator(10, {type: "MULT", payload: 2}))
+
+
+
+// //⛔️НЕПРАВИЛЬНО
+// let result = 0 //4
+//
+// for (let i = 0; i < 5; i++) {
+//   if (i % 2) {
+//     result += i
+//   }
+// }
+//
+//
+// export const studentName = result - 4 ? "Valera" : "Lev"
+// console.log(studentName)
+// // Какое значение получит переменная studentName?
+
+
+
+
+// type Action = {
+//   type: "SUM" | "SUB" | "MULT" | "DIV"
+//   payload: number
+// }
+//
+// export const calculator = (state: number, action: Action): number => {
+//   switch (action.type) {
+//     case "SUM":
+//       return state + action.payload
+//     case "SUB":
+//       return state - action.payload
+//     case "DIV":
+//       return state / action.payload
+//     default:
+//       return state
+//   }
+// }
+//
+// //Обработка какого action.type не предусмотрена в функции calculator?
+
+
+
+// type Action = {
+//   type: "SUM" | "SUB" | "MULT" | "DIV"
+//   payload: number
+// }
+//
+// export const calculator = (state: number, action: Action): number => {
+//   switch (action.type) {
+//     case "SUM":
+//       return state + action.payload
+//     case "SUB":
+//       return state - action.payload
+//     case "DIV":
+//       return state / action.payload
+//     case "MULT":
+//       return state * action.payload
+//     default:
+//       return state
+//   }
+// }
+//
+// const result = calculator(10, {type: "SUB", payload: 5 })
+// console.log(result)
+//
+// //Что надо написать вместо XXX, что бы переменная result содержала значение 5?
+
+
+
+
+// type Action = {
+//   type: "SUM" | "SUB" | "MULT" | "DIV"
+//   payload: number
+// }
+//
+// export const calculator = (state: number, action: Action) => {
+//   switch (action.type) {
+//     case "SUM":
+//       return state + action.payload
+//     case "SUB":
+//       return state - action.payload
+//     case "DIV":
+//       return state / action.payload
+//     default:
+//       return state
+//   }
+// }
+//
+// //Что надо написать вместо ХХХ, чтобы функция calculator работала?
+
+
+
+
+// type Action = {
+//   type: "SUM" | "SUB" | "MULT" | "DIV" | "EXP"
+//   payload: number
+// }
+//
+// export const calculator = (state: number, action: Action): number => {
+//   switch (action.type) {
+//     case "SUM":
+//       return state + action.payload
+//     case "SUB":
+//       return state - action.payload
+//     case "DIV":
+//       return state / action.payload
+//     case "MULT":
+//       return state * action.payload
+//     case "EXP":
+//       return state ** action.payload
+//     default:
+//       return state
+//   }
+// }
+// const result = calculator(10, { type: "EXP", payload: 0 })
+// if (!(result - 1)) {
+//   console.log("IT-INCUBATOR")
+// }
+//
+// // Что надо написать вместо XXX чтобы в консоли появилась строка "IT-INCUBATOR"?
+
+
