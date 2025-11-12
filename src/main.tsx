@@ -2695,3 +2695,216 @@
 
 
 
+// ❗
+// import { Provider, useSelector } from "react-redux"
+// import { createRoot } from "react-dom/client"
+// import { combineReducers, configureStore } from "@reduxjs/toolkit"
+//
+// let initialState = {
+//   items: [
+//     { id: 1, name: "Dimych" },
+//     { id: 2, name: "Ignat" },
+//   ],
+// }
+// const usersReducer = (state = initialState, action: any) => {
+//   return state
+// }
+//
+// let authInitialState = { login: "Margo", settings: { theme: "dark" } }
+// const authReducer = (state = authInitialState, action: any) => {
+//   return state
+// }
+//
+// const rootReducer = combineReducers({
+//   users: usersReducer,
+//   auth: authReducer,
+// })
+//
+// const store = configureStore({
+//   reducer: rootReducer,
+// })
+//
+// type RootStateType = ReturnType<typeof rootReducer>
+//
+// export const selector = (state: RootStateType) => state.users.items
+//
+// const Users = () => {
+//   const users = useSelector(selector)
+//
+//   return (
+//     <ul>
+//       {users.map((u) => (
+//         <li key={u.id}>{u.name}</li>
+//       ))}
+//     </ul>
+//   )
+// }
+//
+// createRoot(document.getElementById("root")!).render(
+//   <Provider store={store}>
+//     <Users />
+//   </Provider>,
+// )
+//
+// // Что нужно написать вместо XXX, чтобы отрендерить список юзеров?
+// // ❗ Ответ дать минимально возможным объёмом кода
+
+
+
+
+
+
+
+// let number = 92
+//
+// if (number > 0) {
+//   let number = 35
+//   number++
+// }
+//
+// const getNumber = (number: any) => {
+//   number *= 10
+//   return number //920
+// }
+//
+// export const bigValue = getNumber("number") || number
+// console.log(bigValue)
+// // Какое значение получит переменная bigValue?
+
+
+
+
+// import { combineReducers, configureStore } from "@reduxjs/toolkit"
+//
+// let initialState = { items: [{ name: "Dimych" }, { name: "Ignat" }] }
+// const usersReducer = (state = initialState, action: any) => {
+//   return state
+// }
+//
+// const store = configureStore({
+//   reducer: combineReducers({
+//     users: usersReducer,
+//   }),
+// })
+//
+// store.subscribe(() => {
+//   const state = store.getState()
+//   console.log(state)
+// })
+//
+// store.dispatch({ type: "ANY" })
+//
+// // Что нужно написать вместо XXX, чтобы получить актуальный стейт?
+
+
+
+
+// import { CSSProperties, useReducer, useState } from "react"
+// import { createRoot } from "react-dom/client"
+//
+// const commonStyles: CSSProperties = {
+//   border: "1px solid black",
+//   margin: "100px auto",
+//   width: "300px",
+//   height: "150px",
+//   textAlign: "center",
+// }
+//
+// const btnStyles: CSSProperties = {
+//   color: "white",
+//   fontWeight: "bold",
+//   backgroundColor: "darkgray",
+//   borderRadius: "3px",
+//   minWidth: "40px",
+// }
+//
+// const changeCounter = (state: number, action: any): number => {
+//   switch (action.type) {
+//     case "INC_VALUE":
+//       return state + 1
+//     case "RESET":
+//       return 0
+//     case "DEC_VALUE":
+//       return state - 1
+//     default:
+//       return state
+//   }
+// }
+//
+// const Counter = () => {
+//   const [value, setValue] = useReducer(changeCounter, 0)
+//   const [isCounter, setIsCounter] = useState(true)
+//
+//   return (
+//     <div style={commonStyles}>
+//       {isCounter && (
+//         <div>
+//           <div style={{ marginBottom: "20px" }}>
+//             <h2>{value}</h2>
+//             <button style={{ ...btnStyles, backgroundColor: "red" }} onClick={() => setIsCounter(false)}>
+//               OFF
+//             </button>
+//           </div>
+//           <button style={btnStyles} onClick={() => setValue({ type: "INC_VALUE" })}>
+//             +
+//           </button>
+//           <button style={btnStyles} onClick={() => setValue({ type: "RESET" })}>
+//             0
+//           </button>
+//           <button style={btnStyles} onClick={() => setValue({ type: "DEC_VALUE" })}>
+//             -
+//           </button>
+//         </div>
+//       )}
+//       {!isCounter && (
+//         <div style={{ textAlign: "center" }}>
+//           <h2>Counter not working</h2>
+//           <button style={{ ...btnStyles, backgroundColor: "green" }} onClick={() => setIsCounter(true)}>
+//             ON
+//           </button>
+//         </div>
+//       )}
+//     </div>
+//   )
+// }
+//
+// createRoot(document.getElementById("root")!).render(<Counter />)
+//
+// // Что надо написать вместо XXX и YYY, чтобы код работал? Напишите через пробел.
+
+
+
+
+
+//‼️НЕ РЕШИЛА
+// const myFunction = (a: number, b = 3) => a + b
+//
+// const result = myFunction(346, undefined) % 2
+//
+// export const winner = result ? "Yana" : "Victor"
+// console.log(winner)
+//
+// // Какое значение получит переменная winner?
+
+
+
+// import { combineReducers, configureStore } from "@reduxjs/toolkit"
+//
+// let initialState = { items: [{ name: "Dimych" }, { name: "Ignat" }] }
+// const usersReducer = (state = initialState, action: any) => {
+//   return state
+// }
+//
+// const store = configureStore({
+//   reducer: combineReducers({
+//     users: usersReducer,
+//   }),
+// })
+//
+// store.subscribe(() => {
+//   console.log("state changed")
+// })
+//
+// store.dispatch({ type: "ANY" })
+//
+// // Что нужно написать вместо XXX, чтобы в консоли увидеть 'state changed'?
