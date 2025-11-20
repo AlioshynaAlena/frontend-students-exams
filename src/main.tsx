@@ -2908,3 +2908,456 @@
 // store.dispatch({ type: "ANY" })
 //
 // // Что нужно написать вместо XXX, чтобы в консоли увидеть 'state changed'?
+
+
+
+
+
+// import axios from "axios"
+// import { createRoot } from "react-dom/client"
+// import { useEffect, useState } from "react"
+//
+// // Types
+// type Product = {
+//   id: string
+//   title: string
+//   description: string
+//   price: number
+// }
+//
+// type Film = {
+//   id: number
+//   nameOriginal: string
+//   description: string
+//   ratingImdb: number
+// }
+//
+// type ProductsResponse = {
+//   total: number
+//   messages: string[]
+//   page: number
+//   pageCount: number
+//   data: Product[]
+// }
+//
+// type FilmsResponse = {
+//   total: number
+//   messages: string[]
+//   page: number
+//   pageCount: number
+//   data: Film[]
+// }
+//
+// type CommonResponse<T> = {
+//   total: number
+//   messages: string[]
+//   page: number
+//   pageCount: number
+//   data: T[]
+// }
+//
+// // Api
+// const instance = axios.create({ baseURL: "https://exams-frontend.kimitsu.it-incubator.io/api/" })
+//
+// const api = {
+//   getProducts() {
+//     return instance.get<ProductsResponse>("products")
+//   },
+//   getFilms() {
+//     return instance.get<FilmsResponse>("films")
+//   },
+// }
+//
+// // App
+// const App = () => {
+//   return (
+//     <>
+//       <h1>🛒 Products && 🎦 Films</h1>
+//       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+//         <Products />
+//         <Films />
+//       </div>
+//     </>
+//   )
+// }
+//
+// const Products = () => {
+//   const [products, setProducts] = useState<Product[]>([])
+//
+//   useEffect(() => {
+//     api.getProducts().then((res) => setProducts(res.data.data))
+//   }, [])
+//
+//   return (
+//     <div style={{ width: "45%" }}>
+//       <h2>🛒 Products</h2>
+//       <div>
+//         {products.map((p) => {
+//           return (
+//             <div key={p.id}>
+//               <b>{p.title}</b>
+//               <p>{p.description}</p>
+//               <p>💵 {p.price} $</p>
+//             </div>
+//           )
+//         })}
+//       </div>
+//     </div>
+//   )
+// }
+//
+// const Films = () => {
+//   const [films, setFilms] = useState<Film[]>([])
+//
+//   useEffect(() => {
+//     api.getFilms().then((res) => setFilms(res.data.data))
+//   }, [])
+//
+//   return (
+//     <div style={{ width: "45%" }}>
+//       <h2>🎦 Films</h2>
+//       <div>
+//         {films.map((f) => {
+//           return (
+//             <div key={f.id}>
+//               <b>{f.nameOriginal}</b>
+//               <p>{f.description}</p>
+//               <p>⭐ {f.ratingImdb} </p>
+//             </div>
+//           )
+//         })}
+//       </div>
+//     </div>
+//   )
+// }
+//
+// createRoot(document.getElementById("root")!).render(<App />)
+//
+// // 📜 Описание:
+// // При запуске проекта на экране вы увидите 2 списка: Products и Films.
+// // С ними все хорошо, но обратите внимание на типизацию ответов с сервера ProductsResponse и FilmsResponse.
+// // ❗Дублирование типов на лицо.
+// // Ваша задача написать дженериковый тип CommonResponse и заменить им дублирующие типы.
+// // ❗Очередность свойств в типах менять запрещено (по причине что нам будет тяжело перебрать все правильные варианты)
+// // ❗Параметр тип назовите буквой T
+// //
+// // В качестве ответа нужно скопировать полностью рабочий дженериковый тип CommonResponse
+// //
+// // 🖥 Пример ответа:
+// // type CommonResponse = {
+// //   total: T
+// //   messages: T[]
+// //   page: T
+// //   pageCount: T
+// //   data: T[]
+// // }
+
+
+
+
+
+
+
+// const ownership = {
+//   name: "Valera",
+//   age: 90,
+//   technologies: ["HTML", "", "REACT"],
+// }
+//
+// export const [bravery = "FOO", fun = "BOO", tenderness = "DOO"] = ownership.technologies
+//
+// if (!fun) {
+//   alert("HEY")
+// }
+//
+// // Какую переменную следует указать вместо XXX, что бы была вызвана функция alert?
+
+
+
+
+
+// type TracksState = {
+//   volume: number // in percents
+//   trackUrl: string // 'https://blabla.com/track01.mp3',
+//   currentPlayPosition: number // milliseconds,
+// }
+//
+// export const reducer = (state: TracksState, action: any) => {
+//   switch (action.type) {
+//     case "TRACK-URL-CHANGED":
+//       return {
+//         ...state,
+//         trackUrl: action.url,
+//       }
+//     case "TRACK-MUTED":
+//       return {
+//         ...state,
+//         volume: 0,
+//       }
+//     case "TRACK-REWOUND-TO-START":
+//       return {
+//         ...state,
+//         currentPlayPosition: 0,
+//       }
+//     default:
+//       return state
+//   }
+// }
+//
+// export const muteTrackAC = () => ({ type: "TRACK-MUTED" })
+// export const changeTrackAC = (url: string) => ({ type: "TRACK-URL-CHANGED", url })
+//
+// // перемотатьНаНачало:
+// export const rewindToStart = () => ({ type: "TRACK-REWOUND-TO-START" })
+//
+// // Какие типы должны быть вместо XXX, YYY и ZZZ?
+// // Ответ дать через пробел, например:  'BLABLA' 'HEYНЕY' 'HIPHOP'
+
+
+
+
+
+// export const reducer = (state: any, action: any) => {
+//   switch (action.type) {
+//     case "TRACK-ADDED":
+//       return [...state, {id: action.id, likesCount:0 }]
+//     default:
+//       return state
+//   }
+// }
+//
+// const addTrackAC = (trackId: number) => ({ type: "TRACK-ADDED", trackId })
+//
+// const state = [
+//   { id: 12, likesCount: 10 },
+//   { id: 14, likesCount: 2 },
+//   { id: 100, likesCount: 0 },
+// ]
+// const newState = reducer(state, addTrackAC(300))
+//
+// console.log(newState[3].likesCount === 0)
+//
+// // Что нужно написать вместо XXX, чтобы трек корректно добавился и в консоли увидеть true?
+
+
+
+
+
+// import { Provider, useDispatch, useSelector } from "react-redux"
+// import { createRoot } from "react-dom/client"
+// import { configureStore } from "@reduxjs/toolkit"
+//
+// const listItemStyles = {
+//   width: "100px",
+//   borderBottom: "1px solid gray",
+//   cursor: "pointer",
+// }
+//
+// const students = {
+//   students: [
+//     { id: 1, name: "Bob" },
+//     { id: 2, name: "Alex" },
+//     { id: 3, name: "Donald" },
+//     { id: 4, name: "Ann" },
+//   ],
+// }
+//
+// type RemoveStudentAT = {
+//   type: "REMOVE-STUDENT"
+//   id: number
+// }
+//
+// export const removeStudentAC = (id: number): RemoveStudentAT => ({
+//   type: "REMOVE-STUDENT",
+//   id,
+// })
+//
+// const studentsReducer = (state = students, action: RemoveStudentAT) => {
+//   switch (action.type) {
+//     case "REMOVE-STUDENT":
+//       return {
+//         ...state,
+//         students: state.students.filter((s) => s.id !== action.id),
+//       }
+//     default:
+//       return state
+//   }
+// }
+//
+// const store = configureStore({ reducer: studentsReducer })
+// type RootStateType = ReturnType<typeof studentsReducer>
+//
+// const StudentList = () => {
+//   const students = useSelector((state: RootStateType) => state.students)
+//
+//   const dispatch = useDispatch()
+//
+//   return (
+//     <ol>
+//       {students.map((s) => {
+//         const removeStudent = () => {
+//           dispatch(removeStudentAC(s.id))
+//         }
+//
+//         return (
+//           <li key={s.id} style={listItemStyles} onClick={removeStudent}>
+//             {s.name}
+//           </li>
+//         )
+//       })}
+//     </ol>
+//   )
+// }
+//
+// createRoot(document.getElementById("root")!).render(
+//   <Provider store={store}>
+//     <StudentList />
+//   </Provider>,
+// )
+//
+// // Что нужно написать вместо XXX, YYY и ZZZ, чтобы при клике по имени студент удалялся из списка?
+// // Ответ дайте через пробел, например: doc cat fish
+
+
+
+
+
+// import { Provider, useSelector } from "react-redux"
+// import { createRoot } from "react-dom/client"
+// import { configureStore } from "@reduxjs/toolkit"
+//
+// type Student = {
+//   id: number
+//   name: string
+//   age: number
+// }
+//
+// const initState = {
+//   students: [
+//     { id: 1, name: "Bob", age: 23 },
+//     { id: 2, name: "Alex", age: 22 },
+//   ] as Student[],
+// }
+//
+// type AddStudentAction = {
+//   type: "ADD-STUDENT"
+//   name: string
+//   age: number
+//   id: number
+// }
+//
+// type InitialState = typeof initState
+//
+// const studentsReducer = (state: InitialState = initState, action: AddStudentAction): InitialState => {
+//   switch (action.type) {
+//     case "ADD-STUDENT":
+//       return {
+//         ...state,
+//         students: [
+//           ...state.students,
+//           {
+//             name: action.name,
+//             age: action.age,
+//             id: action.id,
+//           },
+//         ],
+//       }
+//     default:
+//       return state
+//   }
+// }
+//
+// export const appStore = configureStore({ reducer: studentsReducer })
+// type RootState = ReturnType<typeof studentsReducer>
+//
+// const StudentList = () => {
+//   const students = useSelector((state: RootState) => state.students)
+//
+//   return (
+//     <ul>
+//       {students.map((s) => (
+//         <li key={s.id}>{`${s.name}. ${s.age} years.`}</li>
+//       ))}
+//     </ul>
+//   )
+// }
+//
+// createRoot(document.getElementById("root")!).render(
+//   <Provider store={appStore}>
+//     <StudentList />
+//   </Provider>,
+// )
+// // Что нужно написать вместо XXX, YYY и ZZZ, чтобы отобразился список студентов?
+// // Ответ дайте через пробел, например: doc cat fish
+
+
+
+
+// //‼️НЕПРАВИЛЬНО
+// const numbers = [71, 52, 50, 92]
+// const mapFunction = (el: number, index: number) => el * index
+// const mappedArray = numbers.map(mapFunction)
+// console.log(mappedArray)
+//
+// const myNumber = mappedArray[0] && mappedArray[mappedArray.length - 1]
+// console.log(myNumber)
+// export const bigCount = 35 + myNumber
+// console.log(bigCount)
+// // Какое значение получит переменная bigCount?
+
+
+
+// import axios from "axios"
+// import { createRoot } from "react-dom/client"
+// import { useEffect, useState } from "react"
+//
+// // Types
+// type Todolist = {
+//   id: string
+//   tile: string //
+//   order: number
+//   createdAt: string
+//   updatedAt: string
+//   complete: boolean //
+// }
+//
+// // Api
+// const instance = axios.create({ baseURL: "https://exams-frontend.kimitsu.it-incubator.io/api/" })
+//
+// const todosAPI = {
+//   getTodos() {
+//     return instance.get<Todolist[]>("todos")
+//   },
+// }
+//
+// // App
+// const App = () => {
+//   const [todos, setTodos] = useState<Todolist[]>([])
+//
+//   useEffect(() => {
+//     todosAPI.getTodos().then((res) => setTodos(res.data))
+//   }, [])
+//
+//   return (
+//     <>
+//       <h2>✅ Список тудулистов</h2>
+//       {todos.map((t) => {
+//         return (
+//           <div style={t.complete ? { color: "grey" } : {}} key={t.id}>
+//             <input type="checkbox" checked={t.complete} />
+//             <b>Описание</b>: {t.tile}
+//           </div>
+//         )
+//       })}
+//     </>
+//   )
+// }
+//
+// createRoot(document.getElementById("root")!).render(<App />)
+//
+// // 📜 Описание:
+// // При написании типизации по невнимательности было допущено несколько ошибок.
+// // Напишите через пробел правильные свойства Todolist, в которых была допущена ошибка.
+// // 💡 Debugger / network / документация в помощь
+//
+// // 🖥 Пример ответа: id age
