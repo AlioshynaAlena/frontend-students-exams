@@ -3361,3 +3361,372 @@
 // // 💡 Debugger / network / документация в помощь
 //
 // // 🖥 Пример ответа: id age
+
+
+
+
+
+
+// const value = 49
+//
+// const getValue = (value: any) => {
+//   value += 31
+//   return value //number
+// }
+//
+//
+// export const myResult = getValue("") || value
+// console.log(myResult)
+//
+// // Какое значение получит переменная myResult?
+
+
+
+
+// export const reducer = (state: any, action: any) => {
+//   switch (action.type) {
+//     case "USER-NAME-UPDATED":
+//       return {...state, user: {...state.user, name: action.name}}
+//
+//     default:
+//       return state
+//   }
+// }
+//
+// const updateUserNameAC = (name: string) => ({ type: "USER-NAME-UPDATED", name })
+//
+// const state = {
+//   count: 10,
+//   user: {
+//     name: "Dimych",
+//     age: 18,
+//     isMarried: true,
+//     status: "offline",
+//   },
+//   books: ["you don't know JS"],
+// }
+// const newState = reducer(state, updateUserNameAC("Dmitry"))
+//
+// console.log(newState.user.name === "Dmitry")
+// console.log(newState.books === state.books)
+// console.log(newState.user !== state.user)
+//
+// // Что нужно написать вместо XXX, чтобы корректно обновить имя пользователя
+// // и в консоли увидеть: true true true?
+
+
+
+
+
+// import { configureStore, combineReducers } from "@reduxjs/toolkit"
+//
+// let initialState = { items: [{ name: "Dimych" }, { name: "Ignat" }] }
+// const usersReducer = (state = initialState, action: any) => {
+//   return state
+// }
+//
+// let authInitialState = { login: "Margo", settings: { theme: "dark" } }
+// const authReducer = (state = authInitialState, action: any) => {
+//   return state
+// }
+//
+// const store = configureStore({
+//   reducer: combineReducers({
+//     users: usersReducer,
+//     auth: authReducer
+//   }),
+// })
+//
+// store.subscribe(() => {
+//   const login = store.getState().auth.login
+//   console.log(login)
+// })
+//
+// store.dispatch({ type: "ANY" })
+// export default store
+//
+// // Что нужно написать вместо XXX, чтобы в консоли увидеть 'Margo'?
+
+
+
+
+
+
+// import axios from "axios"
+// import { useEffect, useState } from "react"
+// import { createRoot } from "react-dom/client"
+//
+// // Types
+// type Todolist = {
+//   id: string
+//   title: string
+//   order: number
+//   createdAt: string
+//   updatedAt: string
+//   completed: boolean
+// }
+//
+// // Api
+// const instance = axios.create({ baseURL: "https://exams-frontend.kimitsu.it-incubator.io/api/" })
+//
+// const todosAPI = {
+//   getTodo(todoId: string) {
+//     return instance.get<Todolist>(`todos/${todoId}`)
+//   },
+// }
+//
+// // App
+// export const App = () => {
+//   const [todo, setTodo] = useState<Todolist | null>(null)
+//   const [error, setError] = useState<string>("")
+//
+//   useEffect(() => {
+//     const todoId = "637cb9342f24ad82bcb07d8d"
+//     todosAPI
+//       .getTodo(todoId)
+//       .then((res: any) => setTodo(res.data))
+//       .catch(() => {
+//         setError("Ошибка 😰. Анализируй network 😉")
+//       })
+//   }, [])
+//
+//   return (
+//     <>
+//       <h2>✅ Тудулист</h2>
+//       {!!todo ? (
+//         <div>
+//           <div style={todo?.completed ? { color: "grey" } : {}} key={todo?.id}>
+//             <input type="checkbox" checked={todo?.completed} />
+//             <b>Описание</b>: {todo?.title}
+//           </div>
+//           <h2>Так держать. Ты справился 🚀</h2>
+//         </div>
+//       ) : (
+//         <h2 style={{ color: "red" }}>{error}</h2>
+//       )}
+//     </>
+//   )
+// }
+//
+// createRoot(document.getElementById("root")!).render(<App />)
+//
+// // 📜 Описание:
+// // Студент по неопытности допустил одну маленькую ошибку, но из-за нее он не может вывести на экран тудулист.
+// // Найдите ошибку и вставьте исправленную версию строки кода в качестве ответа
+// // P.S. Эта ошибка из реальной жизни, студенты часто ошибаются подобным образом и не могут понять в чем дело.
+
+
+
+
+
+
+// export const reducer = (state: any, action: any) => {
+//   switch (action.type) {
+//     case "TRACK-DELETED":
+//       return state.filter((track: any) => track.id !== action.trackId)
+//     default:
+//       return state
+//   }
+// }
+//
+// const deleteTrackAC = (trackId: number) => ({ type: "TRACK-DELETED", trackId })
+//
+// const state = [
+//   { id: 12, likesCount: 10 },
+//   { id: 14, likesCount: 2 },
+//   { id: 100, likesCount: 0 },
+// ]
+//
+// const newState = reducer(state, deleteTrackAC(14))
+// console.log(newState.length === 2)
+//
+// // Что нужно написать вместо XXX, чтобы корректно удалить трек и в консоли увидеть true?
+
+
+
+
+
+
+
+// export const reducer = (state: any, action: any) => {
+//   switch (action.type) {
+//     case "TRACK-ADDED":
+//       return {
+//         ...state,
+//         [action.trackId]: {
+//           id: action.trackId,
+//           likesCount: 0,
+//         },
+//       }
+//     default:
+//       return state
+//   }
+// }
+//
+// const addTrackAC = (trackId: number) => ({ type: "TRACK-ADDED", trackId })
+//
+// const state = {
+//   12: { id: 12, likesCount: 10 },
+//   14: { id: 14, likesCount: 2 },
+//   100: { id: 100, likesCount: 0 },
+// }
+//
+// const newState = reducer(state, addTrackAC(300))
+// console.log(newState[300].likesCount === 0)
+//
+// // Что нужно написать вместо XXX, чтобы в консоли увидеть true?
+
+
+
+
+
+// import axios from "axios"
+// import { createRoot } from "react-dom/client"
+// import { useEffect, useState } from "react"
+//
+// // Types
+// type Post = {
+//   id: string
+//   body: string
+//   title: string
+//   userId: string
+// }
+//
+// // Api
+// export const instance = axios.create({ baseURL: "https://exams-frontend.kimitsu.it-incubator.io/api/" })
+//
+// const postsAPI = {
+//   getPosts() {
+//     return  instance.get<Post[]>("posts")
+//     // Promise.resolve() стоит в качестве заглушки, чтобы TS не ругался и код компилировался
+//     // Promise.resolve() нужно удалить и написать правильный запрос для получения постов
+//
+//   },
+// }
+//
+// // App
+// export const App = () => {
+//   const [posts, setPosts] = useState<Post[]>([])
+//
+//   useEffect(() => {
+//     postsAPI.getPosts().then((res: any) => {
+//       setPosts(res.data)
+//     })
+//   }, [])
+//
+//   return (
+//     <>
+//       <h1>📜 Список постов</h1>
+//       {posts.length ? (
+//         posts.map((p) => {
+//           return (
+//             <div key={p.id}>
+//               <b>title</b>: {p.title}
+//             </div>
+//           )
+//         })
+//       ) : (
+//         <h2>Постов нету 😥</h2>
+//       )}
+//     </>
+//   )
+// }
+//
+// createRoot(document.getElementById("root")!).render(<App />)
+//
+// // 📜 Описание:
+// // Напишите запрос на сервер для получения всех постов
+// // Типизацию возвращаемых данных в ответе указывать необязательно, но можно и указать (в ответах учтены оба варианта).
+// // Исправленную версию строки напишите в качестве ответа.
+
+
+
+
+
+// const students = [{ name: "Bob" }, { name: "Alex" }, { name: "Donald" }]
+// const filteredStudents = students.filter((s) => s.name !== "Kate")
+// console.log(filteredStudents)
+// const lengthDiff = students.length - filteredStudents.length
+// export const newValue = (lengthDiff && 25.56) || (46.65 && 48.71)
+// console.log(newValue)
+//
+// // Какое значение получит переменная newValue?
+
+
+
+// ❤️// import { CSSProperties, useReducer, useState } from "react"
+// import { createRoot } from "react-dom/client"
+//
+// const commonStyles: CSSProperties = {
+//   border: "1px solid black",
+//   margin: "100px auto",
+//   width: "300px",
+//   height: "150px",
+//   textAlign: "center",
+// }
+//
+// const btnStyles: CSSProperties = {
+//   color: "white",
+//   fontWeight: "bold",
+//   backgroundColor: "darkgray",
+//   borderRadius: "3px",
+//   minWidth: "40px",
+// }
+//
+// const changeCounter = (state: number, action: any): number => {
+//   switch (action.type) {
+//     case "INC_VALUE":
+//       return state + 1
+//     case "RESET":
+//       return 0
+//     case "DEC_VALUE":
+//       return state - 1
+//     default:
+//       return state
+//   }
+// }
+//
+// const Counter = () => {
+//   const [value, setValue] = useReducer(changeCounter, 0)
+//   const [isCounter, setIsCounter] = useState(true)
+//
+//   return (
+//     <div style={commonStyles}>
+//       {isCounter && (
+//         <div>
+//           <div style={{ marginBottom: "20px" }}>
+//             <h2>{value}</h2>
+//             <button style={{ ...btnStyles, backgroundColor: "red" }} onClick={() => setIsCounter(false)}>
+//               OFF
+//             </button>
+//           </div>
+//           <button style={btnStyles} onClick={() => setValue({ type: "INC_VALUE" })}>
+//             +
+//           </button>
+//           <button style={btnStyles} onClick={() => setValue({ type: "RESET" })}>
+//             0
+//           </button>
+//           <button style={btnStyles} onClick={() => setValue({ type: "DEC_VALUE" })}>
+//             -
+//           </button>
+//         </div>
+//       )}
+//       {!isCounter && (
+//         <div style={{ textAlign: "center" }}>
+//           <h2>Counter not working</h2>
+//           <button style={{ ...btnStyles, backgroundColor: "green" }} onClick={() => setIsCounter(true)}>
+//             ON
+//           </button>
+//         </div>
+//       )}
+//     </div>
+//   )
+// }
+//
+// createRoot(document.getElementById("root")!).render(<Counter />)
+//
+// // Что надо написать вместо XXX и YYY, чтобы код работал? Напишите через пробел.
+
+
+
+
